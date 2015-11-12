@@ -11,7 +11,7 @@ public class main {
 			int CurrentPage = 0;
 			String username = "";
 			
-////////////////////////////////////////////////
+//////////////////////////////////////////////// THE FOLLOWING IS MY ATTEMPT TO READ THE FILE
 
 			//Gets path of 'Users.txt' file.
 			String filePath = new File("Users.txt").getAbsolutePath();
@@ -39,7 +39,7 @@ public class main {
 	                + fileName + "'");    
 	        }
 				
-////////////////////////////////////////////////
+//////////////////////////////////////////////// ATTEMPT ENDS HERE
 			
 			while (correctInput == false){
 				
