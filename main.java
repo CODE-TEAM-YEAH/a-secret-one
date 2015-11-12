@@ -41,7 +41,6 @@ public class main {
 				
 ////////////////////////////////////////////////
 			
-			
 			while (correctInput == false){
 				
 				Boolean correctInput2 = false;
@@ -56,13 +55,13 @@ public class main {
 				ChoiceP1 = in1.nextInt();
 			
 				if(ChoiceP1 == 1){
-					//....................
+					//....................CHECK USERS TEXT FILE
 					correctInput = true;
 					System.out.println("\nEnter your username: ");
 					username = in2.nextLine();
 				}
 				else if (ChoiceP1 == 2){
-					//....................
+					//....................CHECK USERS TEXT FILE
 					CurrentPage = 2;
 					correctInput = true;
 					System.out.println("\nChoose your username: ");
@@ -106,10 +105,9 @@ public class main {
 							//.................SHOW SHOPPING CART TEXT FILE
 							CurrentPage = 7;
 						}
-						else if (ChoiceP2 == 3){
+						else if (ChoiceP2 == 3){ //RETURNS TO MAIN MENU
 							correctInput2 = true;
 							correctInput = false;
-							//.................
 							CurrentPage = 1;
 						}
 						else{
