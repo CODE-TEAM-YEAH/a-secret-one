@@ -1,15 +1,30 @@
+import java.util.ArrayList;
+
 public class UserInterface{
-  private String[] readables;//find out how to find length for these
-  private String[] audioProducts;
-  private int currentPage; // the page number (P1..P10)
-	  
-	  public int getCurrentPage(int page){// This method is for page navigation. Based on the values of the state variable, call different pages
-	    currentPage = page;
-	  }
-	  public int changeCurrentPage(int page){// This method is for page navigation. It should change to current page and show the content.
-	  public void getReadables(); // Fetches all readables from the files and places them in the readables array
-	  public void getAudioProducts(); // Fetches all audio products from the files and places them in the readables array
-	  public void showReadables(); // Displays all readables for browsing
-	  public void showAudioProducts(); // Displays all audio products for browsing
-	  //more methods
+	private ArrayList<Readable> readables = new ArrayList<Readable>();
+	private ArrayList<Audio> audioProducts = new ArrayList<Audio>();
+	private int currentPage;
+	
+	public int getCurrentPage(){
+		
+		return 0;
+	}
+	
+	public void getReadables(){
+		
+	}
+	
+	public void getAudioProducts(){
+	
+	}
+	
+	public void showReadables(){
+		
+	}
+	
+	public void showAudioProducts(){
+		
+	}
+	
+	
 }

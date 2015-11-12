@@ -1,9 +1,13 @@
-public class​Readable extends ​Item {
-  protected​String​authorName;
-  public​String​getInfo(...){...} //Returns sNo, Name, Author
-  name, etc in a string
-  @Override
-  public int​getPrice(...){ // override
-  …
-  }
+public class Readable extends Item{
+	
+	protected String authorName;
+
+	public String getInfo() {
+		return "";
+	}
+	@Override
+	public int getPrice(){
+		return 0;
+	}
+	
 }

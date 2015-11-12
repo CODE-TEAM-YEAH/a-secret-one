@@ -1,6 +1,13 @@
-public class ShoppingCart extends User{
-  private content //array of items
-  public String getContent(...){// return the content of the
-  shopping cart
-  public addItem (...){}
+public class ShoppingCart extends User {
+
+	private String content;
+	
+	public String getContent(){
+		
+		return "";
+	}
+	
+	public void addItem(){
+		
+	}
 }
