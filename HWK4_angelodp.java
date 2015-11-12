@@ -4,9 +4,10 @@ import java.io.*;
 public class HWK4_angelodp {
 
 	public static void main(String[] args) {
-		UserInterface userInterface = new UserInterface;
+		UserInterface userInterface = new UserInterface();
 		userInterface.changeCurrentPage(1);
-		Boolean correctInput = false;
+		
+		/*Boolean correctInput = false;
 		int ChoiceP1 = 0;
 		int ChoiceP2 = 0;
 		int ChoiceP3 = 0;
@@ -113,5 +114,6 @@ public class HWK4_angelodp {
 				System.out.println("\nInvalid output, please enter again.\n");
 			}
 		}
+	*/
 	}
 }
