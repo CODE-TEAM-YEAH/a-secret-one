@@ -59,11 +59,13 @@ public class UserInterface {
 		}
 
 		else if (page == 8) {
-			
+
 			Page8();
 
 		} else if (page == 9) {
 
+			Page9();
+			
 		} else if (page == 10) {
 
 		}
@@ -75,7 +77,7 @@ public class UserInterface {
 
 		getReadables();
 		getAudioProducts();
-		
+
 		System.out.println("Choose your option:	{1} Sign in\n                    	{2} Sign up");
 		int choice = in.nextInt();
 
@@ -193,12 +195,21 @@ public class UserInterface {
 	private void Page7() {
 
 	}
-	
+
 	private void Page8() {
-		
-		System.out.println("Readables:\nS.No" + "   " + "Name of the Book" + "   " + "Author" + "   " + "Price($)" + "   " + "Quantity in Store" + "   " + "Type");
+
+		System.out.println("Readables:\nS.No" + "   " + "Name of the Book" + "   " + "Author" + "   " + "Price($)"
+				+ "   " + "Quantity in Store" + "   " + "Type");
 		showReadables();
-		
+
+	}
+
+	private void Page9() {
+
+		System.out.println("Readables:\nS.No" + "   " + "Name of the Book" + "   " + "Artist" + "   " + "Price($)"
+				+ "   " + "Quantity in Store" + "   " + "Type");
+		showAudioProducts();
+
 	}
 
 	public void getReadables() { /// +
@@ -290,12 +301,13 @@ public class UserInterface {
 		String[] read;
 		for (Readable i : readables) {
 			read = i.getInfo().split("///");
-			System.out.println(read[0] + "\t" + read[1] + "\t" + read[2] + "\t" + read[3] + "\t" + read[4] + "\t" + read[5]);
+			System.out.println(
+					read[0] + "\t" + read[1] + "\t" + read[2] + "\t" + read[3] + "\t" + read[4] + "\t" + read[5]);
 		}
 	}
 
 	public void showAudioProducts() {
-		
+
 		String[] read;
 		for (Audio i : audioProducts) {
 			read = i.getInfo().split("///");
