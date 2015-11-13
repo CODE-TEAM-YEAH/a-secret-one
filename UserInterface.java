@@ -44,15 +44,23 @@ public class UserInterface {
 
 		else if (page == 5) {
 
+			Page5();
 		}
 
 		else if (page == 6) {
 
+			Page6();
 		}
 
 		else if (page == 7) {
 
-		} else if (page == 8) {
+			Page7();
+
+		}
+
+		else if (page == 8) {
+			
+			Page8();
 
 		} else if (page == 9) {
 
@@ -65,6 +73,9 @@ public class UserInterface {
 
 	private void Page1() {
 
+		getReadables();
+		getAudioProducts();
+		
 		System.out.println("Choose your option:	{1} Sign in\n                    	{2} Sign up");
 		int choice = in.nextInt();
 
@@ -85,7 +96,8 @@ public class UserInterface {
 				BufferedReader bufferedReader = new BufferedReader(fileReader);
 
 				while ((line = bufferedReader.readLine()) != null) {
-					//System.out.println(line + " and the username " + userName);
+					// System.out.println(line + " and the username " +
+					// userName);
 					if (userName.equals(line)) {
 
 						available = true;
@@ -112,46 +124,184 @@ public class UserInterface {
 		}
 
 		else if (choice == 2) {
-			
+
 			System.out.println("\nChoose your username: ");
 			userName = in.next();
-			///////////////////////////////////////////// 
+			/////////////////////////////////////////////
 			String fileName = "Users.txt";
 
 			try {
 				FileWriter fileWriter = new FileWriter(fileName, true);
 				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-				bufferedWriter.write("\n"+userName);
+				bufferedWriter.write("\n" + userName);
 				bufferedWriter.close();
-				
+
 			} catch (FileNotFoundException ex) {
 				System.out.println("Unable to open file '" + fileName + "'");
 			} catch (IOException ex) {
 				System.out.println("Error reading file '" + fileName + "'");
 			}
 			/////////////////////////////////////////////
-			
+
 			changeCurrentPage(2);
 		}
 	}
 
 	private void Page5() {
+		System.out.println("{1} View Items by Category\n{2} View Shopping Cart\n{3} Sign Out\nChoose your option:");
+		int choice2 = in.nextInt();
+
+		if (choice2 == 1) {
+
+			changeCurrentPage(6);
+		}
+
+		else if (choice2 == 2) {
+
+			changeCurrentPage(7);
+		}
+
+		else if (choice2 == 3) {
+
+			changeCurrentPage(1);
+		}
+	}
+
+	private void Page6() {
+
+		System.out.println(
+				"\n{1} Readables\n{2} Audio\nChoose your option:\n(Press -1 to go back to the previous menue)");
+		int choice3 = in.nextInt();
+
+		if (choice3 == 1) {
+
+			changeCurrentPage(8);
+		}
+
+		else if (choice3 == 2) {
+
+			changeCurrentPage(9);
+		}
+
+		else if (choice3 == -1) {
+
+			changeCurrentPage(5);
+		}
 
 	}
 
-	public void getReadables() {
+	private void Page7() {
+
+	}
+	
+	private void Page8() {
+		
+		System.out.println("Readables:\nS.No" + "   " + "Name of the Book" + "   " + "Author" + "   " + "Price($)" + "   " + "Quantity in Store" + "   " + "Type");
+		showReadables();
+		
+	}
+
+	public void getReadables() { /// +
+
+		///////////////////////////////////////////// input
+		String fileName = "Books.txt";
+		String line;
+
+		try {
+			FileReader fileReader2 = new FileReader(fileName);
+			BufferedReader bufferedReader = new BufferedReader(fileReader2);
+
+			while ((line = bufferedReader.readLine()) != null) {
+
+				String info[] = line.split(", ");
+				readables.add(new Book(info));
+			}
+			bufferedReader.close();
+		} catch (FileNotFoundException ex) {
+			System.out.println("Unable to open file '" + fileName + "'");
+		} catch (IOException ex) {
+			System.out.println("Error reading file '" + fileName + "'");
+		}
+		/////////////////////////////////////////////
+		String fileName2 = "Ebooks.txt";
+		String line2;
+
+		try {
+			FileReader fileReader3 = new FileReader(fileName2);
+			BufferedReader bufferedReader2 = new BufferedReader(fileReader3);
+
+			while ((line2 = bufferedReader2.readLine()) != null) {
+
+				String info2[] = line2.split(", ");
+				readables.add(new eBook(info2));
+			}
+			bufferedReader2.close();
+		} catch (FileNotFoundException ex) {
+			System.out.println("Unable to open file '" + fileName2 + "'");
+		} catch (IOException ex) {
+			System.out.println("Error reading file '" + fileName2 + "'");
+		}
 
 	}
 
-	public void getAudioProducts() {
+	public void getAudioProducts() { /// +
 
+		///////////////////////////////////////////// input
+		String fileName = "CDs.txt";
+		String line;
+
+		try {
+			FileReader fileReader2 = new FileReader(fileName);
+			BufferedReader bufferedReader = new BufferedReader(fileReader2);
+
+			while ((line = bufferedReader.readLine()) != null) {
+
+				String info[] = line.split(", ");
+				audioProducts.add(new CD(info));
+			}
+			bufferedReader.close();
+		} catch (FileNotFoundException ex) {
+			System.out.println("Unable to open file '" + fileName + "'");
+		} catch (IOException ex) {
+			System.out.println("Error reading file '" + fileName + "'");
+		}
+		/////////////////////////////////////////////
+		String fileName2 = "MP3.txt";
+		String line2;
+
+		try {
+			FileReader fileReader3 = new FileReader(fileName2);
+			BufferedReader bufferedReader2 = new BufferedReader(fileReader3);
+
+			while ((line2 = bufferedReader2.readLine()) != null) {
+
+				String info2[] = line2.split(", ");
+				audioProducts.add(new MP3(info2));
+			}
+			bufferedReader2.close();
+		} catch (FileNotFoundException ex) {
+			System.out.println("Unable to open file '" + fileName2 + "'");
+		} catch (IOException ex) {
+			System.out.println("Error reading file '" + fileName2 + "'");
+		}
 	}
 
 	public void showReadables() {
-
+		String[] read;
+		for (Readable i : readables) {
+			read = i.getInfo().split("///");
+			System.out.println(read[0] + "\t" + read[1] + "\t" + read[2] + "\t" + read[3] + "\t" + read[4] + "\t" + read[5]);
+		}
 	}
 
 	public void showAudioProducts() {
+		
+		String[] read;
+		for (Audio i : audioProducts) {
+			read = i.getInfo().split("///");
+			System.out.println(
+					read[0] + "\t" + read[1] + "\t" + read[2] + "\t" + read[3] + "\t" + read[4] + "\t" + read[5]);
+		}
 
 	}
 

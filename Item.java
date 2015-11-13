@@ -5,5 +5,9 @@ public abstract class Item {
 
 	protected int price;
 	protected int sNo;
-	// Add other fields if necessary
+	protected String name;
+	protected int quantity;
+	protected String type;
+	protected int quantityInCart;
+	
 }
