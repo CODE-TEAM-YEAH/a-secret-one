@@ -295,7 +295,7 @@ public class UserInterface {
 		} catch (IOException ex) {
 			System.out.println("Error reading file '" + fileName2 + "'");
 		}
-	}
+	} 
 
 	public void showReadables() {
 		String[] read;
