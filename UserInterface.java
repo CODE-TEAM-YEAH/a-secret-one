@@ -65,7 +65,7 @@ public class UserInterface {
 		} else if (page == 9) {
 
 			Page9();
-			
+
 		} else if (page == 10) {
 
 		}
@@ -295,14 +295,31 @@ public class UserInterface {
 		} catch (IOException ex) {
 			System.out.println("Error reading file '" + fileName2 + "'");
 		}
-	} 
+	}
+
+	public String fmtReadables(int space, String data) {
+		int l = data.length();
+		String k;
+		if (l > space) {
+			k = data.substring(0, space - 5) + "...";
+		} else {
+			String m = "";
+			for (int j = 0; j < (space - l); j++) {
+				m += " ";
+			}
+			k = data + m;
+		}
+		return k;
+	}
 
 	public void showReadables() {
 		String[] read;
 		for (Readable i : readables) {
 			read = i.getInfo().split("///");
-			System.out.println(
-					read[0] + "\t" + read[1] + "\t" + read[2] + "\t" + read[3] + "\t" + read[4] + "\t" + read[5]);
+
+			System.out.println("  " + read[0] + "     " + fmtReadables(16, read[1]) + "  " 
+			+ fmtReadables(6, read[2]) + "  " + fmtReadables(8, read[3]) + "  " 
+			+ fmtReadables(17, read[4]) + "  " + fmtReadables(4, read[5]));
 		}
 	}
 
