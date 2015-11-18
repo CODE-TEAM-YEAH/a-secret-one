@@ -13,6 +13,6 @@ public class CD extends Audio {
 		artistName = info[2];
 		price = Integer.parseInt(info[3]);
 		quantity = Integer.parseInt(info[4]);
-		type = "CD";
+		type = info[5];
 	}
 }

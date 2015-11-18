@@ -75,6 +75,8 @@ public class UserInterface {
 
 	private void Page1() {
 
+		readables.clear();
+		audioProducts.clear();
 		getReadables();
 		getAudioProducts();
 
@@ -193,7 +195,7 @@ public class UserInterface {
 	}
 
 	private void Page7() {
-
+		
 	}
 
 	private void Page8() {
@@ -201,15 +203,21 @@ public class UserInterface {
 		System.out.println("Readables:\nS.No" + "   " + "Name of the Book" + "   " + "Author" + "   " + "Price($)"
 				+ "   " + "Quantity in Store" + "   " + "Type");
 		showReadables();
-
+		System.out.println("\nPress -1 to return to previous menu.");
+		if(in.nextInt() == -1){
+			changeCurrentPage(6);
+		}
 	}
 
 	private void Page9() {
 
-		System.out.println("Readables:\nS.No" + "   " + "Name of the Book" + "   " + "Artist" + "   " + "Price($)"
+		System.out.println("Audio:\nS.No" + "   " + "Name of the Book" + "   " + "Artist" + "   " + "Price($)"
 				+ "   " + "Quantity in Store" + "   " + "Type");
 		showAudioProducts();
-
+		System.out.println("\nPress -1 to return to previous menu.");
+		if(in.nextInt() == -1){
+			changeCurrentPage(6);
+		}
 	}
 
 	public void getReadables() { /// +
@@ -243,6 +251,7 @@ public class UserInterface {
 
 			while ((line2 = bufferedReader2.readLine()) != null) {
 
+				
 				String info2[] = line2.split(", ");
 				readables.add(new eBook(info2));
 			}
@@ -297,11 +306,11 @@ public class UserInterface {
 		}
 	}
 
-	public String fmtReadables(int space, String data) {
+	public String fmtProducts(int space, String data) {
 		int l = data.length();
 		String k;
 		if (l > space) {
-			k = data.substring(0, space - 5) + "...";
+			k = data.substring(0, space - 3) + "...";
 		} else {
 			String m = "";
 			for (int j = 0; j < (space - l); j++) {
@@ -317,9 +326,9 @@ public class UserInterface {
 		for (Readable i : readables) {
 			read = i.getInfo().split("///");
 
-			System.out.println("  " + read[0] + "     " + fmtReadables(16, read[1]) + "  " 
-			+ fmtReadables(6, read[2]) + "  " + fmtReadables(8, read[3]) + "  " 
-			+ fmtReadables(17, read[4]) + "  " + fmtReadables(4, read[5]));
+			System.out.println(" " + fmtProducts(5, read[0]) + "  " + fmtProducts(17, read[1]) + "  "
+					+ fmtProducts(7, read[2]) + "  " + fmtProducts(9, read[3]) + "  " + fmtProducts(18, read[4]) + "  "
+					+ fmtProducts(5, read[5]));
 		}
 	}
 
@@ -328,8 +337,10 @@ public class UserInterface {
 		String[] read;
 		for (Audio i : audioProducts) {
 			read = i.getInfo().split("///");
-			System.out.println(
-					read[0] + "\t" + read[1] + "\t" + read[2] + "\t" + read[3] + "\t" + read[4] + "\t" + read[5]);
+
+			System.out.println(" " + fmtProducts(5, read[0]) + "  " + fmtProducts(17, read[1]) + "  "
+					+ fmtProducts(7, read[2]) + "  " + fmtProducts(9, read[3]) + "  " + fmtProducts(18, read[4]) + "  "
+					+ fmtProducts(5, read[5]));
 		}
 
 	}
