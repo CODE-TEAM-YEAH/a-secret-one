@@ -16,7 +16,8 @@ public class Audio extends Item {
 	@Override
 	public int getPrice(){
 	
-		return 0; //////////////////Fill in later
+		return price;
+		
 	}
 	
 	

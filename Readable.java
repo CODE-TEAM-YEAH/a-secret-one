@@ -15,7 +15,7 @@ public class Readable extends Item{
 	}
 	@Override
 	public int getPrice(){
-		return 0;
+		return price;
 	}
 	
 }
