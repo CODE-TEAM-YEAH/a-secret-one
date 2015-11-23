@@ -66,7 +66,33 @@ public class ShoppingCart extends User {
 			e.printStackTrace();		// Print it's message
 		}
 	}
-
+	public void addToPurchased(double total, String ID) {		// Function to add a purchase to the file of items bought
+		File g = new File("ItemsBought_" + getUsername() + ".txt");		// Create a file in memory
+		if (!g.exists()) {						// If that file exists in the disk
+			try {
+				g.createNewFile();			// Create the file in the disk
+				FileWriter writer = new FileWriter("ItemsBought_" + getUsername() + ".txt", true); // Create a filewriter for the ItemsBought file
+				BufferedWriter buffer = new BufferedWriter(writer);					// Create a buffer for the writer
+				for (Item i : content) {				// For each item in the content
+					buffer.write(ID + " \t" + i.name + "\t" + total + "\n");		// Write a new line, the code, the item's name and the total
+				}
+				buffer.close();							// Close the buffer
+			} catch (Exception e) {				// Catch any exception
+				e.printStackTrace();		// Print the exception's message
+			}
+		} else {
+			try {
+				FileWriter writer = new FileWriter("ItemsBought_" + getUsername() + ".txt", true); // Create a filewriter for the ItemsBought file
+				BufferedWriter buffer = new BufferedWriter(writer);					// Create a buffer for the writer
+				for (Item i : content) {				// For each item in the content
+					buffer.write(ID + "\t" + i.name + "\t" + total + "\n");		// Write a new line, the code, the item's name and the total
+				}
+				buffer.close();							// Close the buffer
+			} catch (Exception e) {				// Catch any exception
+				e.printStackTrace();		// Print the exception's message
+			}
+		}
+	}
 	public void clean() {		// Function to delete the file
 		f.delete();			// delete the file from the disk.
 	}
