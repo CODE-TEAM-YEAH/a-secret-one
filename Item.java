@@ -1,3 +1,10 @@
+/*
+* Name: Damian Angelone, Liam Duncan, Gagandeep Singh 
+* MacID:​ angelodp, duncanla, singhg25
+* Student 1408211, 1427659, 1306242
+* Description:​ Creates Item objects and all of its parameters as the parent class for our Online Shopping OOP assignment. 
+*/
+
 public abstract class Item { //Class used for items.
 	public abstract String getInfo(); //gets info about the item.
 

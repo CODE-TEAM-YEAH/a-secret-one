@@ -1,10 +1,16 @@
+/*
+* Name: Damian Angelone, Liam Duncan, Gagandeep Singh 
+* MacID: ​angelodp, duncanla, singhg25
+* Student 1408211, 1427659, 1306242
+* Description:​ Acts as the user interface for our Online Shopping OOP assignment. 
+*/
 
 //Imports used for program.
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import javax.sound.sampled.Line;
 import java.lang.Math;
+
 
 //Class for the user interface.
 public class UserInterface {
@@ -258,7 +264,7 @@ public class UserInterface {
 
 			changeCurrentPage(5); // Change the page to 9.
 		}
-		else{
+		else{ //Sanity Check.
 			System.out.println("Incorrect input -- returning to menu."); // Prints to screen.
 			changeCurrentPage(6); // Change the page to 6.
 		}
@@ -305,9 +311,11 @@ public class UserInterface {
 		System.out.println("\nChoose your Option: \nOr Press -1 to return to previous menu."); // Prints to screen.
 		int choice2 = in.nextInt(); // Reads in the user's next option.
 		int optionOnScreen = 0; // Variable used for choosing item.
-
+		boolean continueProg = false; //Used to check for valid input.
+		
 		for (Readable r : readables) { // Loop will iterate for every item in the readables array list.
 			if (r.sNo == choice2) { // Occurs iff the serial number is equal to the user's input.
+				continueProg = true; //True if input is valid.
 				break; // Ends for each loop.
 			} else { // If the current item's serial number doesn't match the user's input, check next item.
 				optionOnScreen += 1; // Moves to next item.
@@ -318,7 +326,7 @@ public class UserInterface {
 			changeCurrentPage(6); // Change the page to 6.
 		}
 
-		else { // If user chooses an item.
+		else if(continueProg == true) { // If user chooses an item.
 			System.out.println("\nEnter quantity: "); // Prints to screen.
 			int quantity = in.nextInt(); // Reads in user's desire quantity.
 			readables.get(optionOnScreen).quantityInCart = quantity; // Accesses the chosen item of the desired quantity to the user's cart.
@@ -335,6 +343,10 @@ public class UserInterface {
 			}
 
 		}
+		else{ //Sanity check.
+			System.out.println("\nInvlid entry.\nReturning to menu . . . \n"); // Prints to screen.
+			changeCurrentPage(9); //Changes current page to 9.
+		}
 	}
 
 	private void Page9() { // Function for page 9.
@@ -345,9 +357,11 @@ public class UserInterface {
 		System.out.println("\nChoose your Option: \nOr Press -1 to return to previous menu."); // Prints to screen.
 		int choice = in.nextInt(); // Reads in user's desire quantity.
 		int optionOnScreen = 0; // Variable used for choosing item.
-
+		boolean continueProg = false; //Used to check for valid input.
+		
 		for (Audio r : audioProducts) { // Loop will iterate for every item in the audio products array list.
 			if (r.sNo == choice) { // Occurs iff the serial number is equal to the user's input.
+				continueProg = true; //True if input is valid.
 				break; // Ends for each loop.
 			} else { // If the current item's serial number doesn't match the user's input, check next item.
 				optionOnScreen += 1; // Moves to next item.
@@ -359,8 +373,8 @@ public class UserInterface {
 
 			changeCurrentPage(6); // Change the page to 6.
 		}
-
-		else { // If user chooses an item.
+		
+		else if (continueProg == true) { // If user chooses an item.
 			System.out.println("\nEnter quantity: "); // Prints to screen.
 			int quantity2 = in.nextInt(); // Reads in user's desire quantity.
 			audioProducts.get(optionOnScreen).quantityInCart = quantity2; // Accesses the chosen item of the desired quantity to the user's cart.
@@ -375,7 +389,11 @@ public class UserInterface {
 			} else if (continuing == 0) { // If user chooses to checkout.
 				changeCurrentPage(10); // Change the page to 10.
 			}
-
+		}
+		
+		else{ //Sanity check.
+			System.out.println("\nInvlid entry.\nReturning to menu . . . \n"); // Prints to screen.
+			changeCurrentPage(9); //Changes current page to 9.
 		}
 	}
 
@@ -416,18 +434,21 @@ public class UserInterface {
 		
 		if (ShopChoice.toLowerCase().equals("yes")){ //If the user types in any variation of 'yes'.
 			System.out.println("\nConfirmation ID: " + ID); // Prints to screen.
-			System.out.println("Items shipped to Mr." + userName + ".\nReturning to menu . . ."); // Prints to screen.
+			System.out.println("Items shipped to Mr." + userName + ".\nReturning to menu . . .\n"); // Prints to screen.
 			cart.addToPurchased(total, ID); //Calls the function that wil ladd items to the 'putchased' text file.
 			cart.clean(); //Deletes contents of the cart.
 			changeCurrentPage(5); //Changes current page to 5.
 		}
 		
-		else{ //If the user types in any variation of 'no'.
+		else if(ShopChoice.toLowerCase().equals("no")){ //If the user types in any variation of 'no'.
 			System.out.println("Payment cancelled.\nDeleting cart . . ."); // Prints to screen.
 			changeCurrentPage(6); //Changes current page to 6.
 			cart.clean(); //Deletes contents of the cart.
 		}
-		
+		else{ //Sanity Check
+			System.out.println("\nInvalid type -- Please try again."); // Prints to screen.
+			changeCurrentPage(10); //Changes current page to 10.
+		}
 
 	}
 	
@@ -443,7 +464,7 @@ public class UserInterface {
 			String file = ""; //Variable to store the file name for read/write.
 			
 			if(category.equals("1")){ //Is user chooses CDs.
-				file = "CDS.txt"; //Choose appropriate file name.
+				file = "CDs.txt"; //Choose appropriate file name.
 			}
 			else if(category.equals("2")){ //Is user chooses MP3.
 				file = "MP3.txt"; //Choose appropriate file name.
@@ -460,6 +481,8 @@ public class UserInterface {
 			}
 			
 			sortByName(file); //Calls function that sorts the items by name.
+			System.out.println("File successfully sorted from Minumum to Maximum.\nReturning to menu . . . "); // Prints to screen.
+			changeCurrentPage(11); //Changes current page to 11.
 			
 		}
 		else if(adminChoice.equals("2")){ //If they chose to sort by price.
@@ -499,7 +522,7 @@ public class UserInterface {
 			String prodName = in.next(); //Takes in user's response for product name.
 			newItem += prodName + ", "; //Concatenates the new item.
 			System.out.println("\nPlease enter the Author/Artist:"); // Prints to screen.
-			String artistAuthor = in.next(); //Takes in user's response for author/artsit..
+			String artistAuthor = in.next(); //Takes in user's response for author/artist.
 			newItem += artistAuthor + ", "; //Concatenates the new item.
 			System.out.println("\nPlease enter the Price:"); // Prints to screen.
 			String newPrice = in.next(); //Takes in user's response for new price.
@@ -599,7 +622,29 @@ public class UserInterface {
 			changeCurrentPage(1); //Change current page to 1.
 		}
 		
-		else if(adminChoice.equals("6")){ //If they chose to sort by name.
+		else if(adminChoice.equals("6")){ //If they chose to remove duplicate names.
+			try{
+			BufferedReader reader = new BufferedReader(new FileReader("Users.txt")); //Creates new Buffered Reader for the Users text file.
+		    Set<String> lines = new HashSet<String>(10000); //Stores each name.
+		    String line; //Used to read each line.
+		    while ((line = reader.readLine()) != null) { //While line isn't blank (runs through the whole file).
+		        lines.add(line.toLowerCase()); //Reads in each lien to the set as a lowercase, so it can compare the mall.
+		    }
+		    reader.close(); //Closes the reader.
+		    BufferedWriter writer = new BufferedWriter(new FileWriter("Users.txt")); //Creates new Buffered writer for the Users text file.
+		    for (String unique : lines) { //Will loop for as many lines in the user's text file.
+		        writer.write(unique); //Writes the only user to the file.
+		        writer.newLine(); //Writes a new line.
+		    }
+		    writer.close(); //Closes the writer.
+			
+			}
+			catch(Exception e){ //Catches errors.
+				System.out.println(e); //Outputs errors.
+				}
+			
+			System.out.println("\nDuplicate Usernames Deleted.\nReturning to menu . . . "); //Prints to screen.
+			changeCurrentPage(11); //Changes current page to 11.
 			
 		}
 		
@@ -741,7 +786,7 @@ public class UserInterface {
 				String[] Content = line.split(", "); //Splits the string by ', ' .
 				Lines.add(Content); //Adds each split string to the array.
 				}
-			int count = 1; //Used for itteration.
+			int count = 1; //Used for iteration.
 			for(int i = 0; i < Lines.size(); i++){ //Will run for as many times as the size of the array.
 				for(int j = i; j < Lines.size(); j++){ //Will run for as many times as the size of the array (same as above).
 					int a = Integer.parseInt(Lines.get(i)[3]); //Checks the price of item A.
@@ -749,7 +794,7 @@ public class UserInterface {
 					if(a > b){ //If Item A is more expensive than Item B.
 						String[] Temp = Lines.get(i); //Takes the first object into the array.
 						Lines.set(i, Lines.get(j)); //Swaps the two items.
-						Lines.set(j, Temp); //Store item from the temp array in the poistion of the other item.
+						Lines.set(j, Temp); //Store item from the temp array in the position of the other item.
 						i = 0; //Resets process.	
 					}
 				}
@@ -783,6 +828,59 @@ public class UserInterface {
 	
 	public void sortByName(String FileName) { //Function used to sort the items alphabetically.
 		
+		try{
+			FileReader fileReader = new FileReader(FileName); // Creates a file reader to read the text file.
+			BufferedReader Item = new BufferedReader(fileReader); // Creates a buffer reader for the file reader.
+			ArrayList<String[]> Lines = new ArrayList<>(); //Used to store temporary sorted items.
+			String line; //used to read through the lines.
+			while ((line = Item.readLine()) != null){ // Creates a file reader to read the text file.
+				String[] Content = line.split(", "); //Splits the string by ', ' .
+				Lines.add(Content); //Adds each split string to the array.
+				}
+			int count = 1; //Used for iteration.
+			for(int i = 0; i < Lines.size(); i++){ //Will run for as many times as the size of the array.
+				for(int j = i; j < Lines.size(); j++){ //Will run for as many times as the size of the array (same as above).
+					
+					String a = Lines.get(i)[1]; //Checks the name of item A.
+					String b = Lines.get(j)[1]; //Checks the name of item B.
+					
+					int compare = a.compareTo(b); //Compares the first character of each string.
+					
+					if (compare > 0)  //Above statement returns a positive number if A is greater than B in the alphabet.
+					{  
+						String[] Temp = Lines.get(i); //Stores item A in a temp array.
+						Lines.set(i, Lines.get(j)); //Swaps the position of A and B.
+						Lines.set(j, Temp); //Stores A where B used to be (bubble sort).
+						i = 0;
+					} 
+						
+				}
+				
+		}
+			FileWriter fileWriter = new FileWriter(FileName, false); // Creates a file writer to write the text file (overwrite).
+			BufferedWriter Write = new BufferedWriter(fileWriter); // Creates a buffer  writer for the file writer.
+			Write.write(""); //Clears the text file.
+			Write.close(); //Closes the writer.
+			FileWriter fileWriter2 = new FileWriter(FileName, true); // Creates a file writer to write the text file.
+			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter2); // Creates a buffer  writer for the file writer.
+			int a =0; //Used for iteration.
+			for (String[] i : Lines){ //Will loop for as many times as there are items in Lines.
+				String str = ""; //Used to store the new Item.
+				for(String s : i){ //Will loop for as many times as the length of string s.
+					str += s + ", "; //Concatenates the item together.
+				}
+				str = str.substring(0, str.length() - 2); //removes the last ', ' from the item.
+				if (a < Lines.size()) { //If the length of the array of items is greater than our value (beginning of loop).
+					str += "\n"; //Skip a line.
+				}
+				a++; //Increase our iteration value.
+				bufferedWriter.write(str); // Adds the user's name to the text file.
+			}	
+			bufferedWriter.close(); // Closes the buffer writer.
+		}
+		catch(Exception e) //Checks for errors.
+		{
+			System.out.println(e); //Prints errors to user.
+		}
 	}
-
 }

@@ -1,4 +1,12 @@
-//Impors for the class.
+/*
+* Name: Damian Angelone, Liam Duncan, Gagandeep Singh 
+* MacID:​ angelodp, duncanla, singhg25
+* Student 1408211, 1427659, 1306242
+* Description:​ Creates Shopping Cart objects for our Online Shopping OOP assignment. 
+*/
+
+
+//Imports for the class.
 import java.util.ArrayList;
 import java.io.*;
 

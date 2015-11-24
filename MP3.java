@@ -1,3 +1,10 @@
+/*
+* Name: Damian Angelone, Liam Duncan, Gagandeep Singh 
+* MacID:​ angelodp, duncanla, singhg25
+* Student 1408211, 1427659, 1306242
+* Description:​ Creates MP3 objects and all of its parameters for our Online Shopping OOP assignment. 
+*/
+
 //Class that creates MP3s (extends Audio -> Item).
 public class MP3 extends Audio {
 

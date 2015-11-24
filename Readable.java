@@ -1,4 +1,11 @@
-public class Readable extends Item{ //Class used for reables (extends items).
+/*
+* Name: Damian Angelone, Liam Duncan, Gagandeep Singh 
+* MacID: ​angelodp, duncanla, singhg25
+* Student 1408211, 1427659, 1306242
+* Description:​ Creates Readable objects and all its parameters for our Online Shopping OOP assignment. 
+*/
+
+public class Readable extends Item{ //Class used for readables (extends items).
 	
 	protected String authorName; //Stores author's name.
 

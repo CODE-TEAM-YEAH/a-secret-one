@@ -1,3 +1,10 @@
+/*
+* Name: Damian Angelone, Liam Duncan, Gagandeep Singh 
+* MacID:​ angelodp, duncanla, singhg25
+* Student 1408211, 1427659, 1306242
+* Description:​ Creates Book objects and all of its parameters for our Online Shopping OOP assignment. 
+*/
+
 //Class that creates books (extends Readable -> Item).
 public class Book extends Readable {
 
