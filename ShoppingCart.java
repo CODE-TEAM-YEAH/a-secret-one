@@ -1,34 +1,34 @@
+//Impors for the class.
 import java.util.ArrayList;
 import java.io.*;
 
-public class ShoppingCart extends User {
+public class ShoppingCart extends User { //Class sued for the shopping cart, which extends User.
  
-	private ArrayList<Item> content = new ArrayList<Item>();
-	File f;
+	private ArrayList<Item> content = new ArrayList<Item>(); //Creates an array list used to store the content of the cart.
+	File f; //File used for writing and reading.
 	
-	public ShoppingCart(String userName){
+	public ShoppingCart(String userName){ //Creates the shopping cart file.
 		
-		setUsername(userName);
-		f = new File("Cart_" + userName + ".txt");
+		setUsername(userName); //Gets the username for the file name.
+		f = new File("Cart_" + userName + ".txt"); //Creates the file name.
 		
-		if(!f.exists()){
-			try{
-				f.createNewFile();
-			} catch (IOException e){
-				e.printStackTrace();
+		if(!f.exists()){ //If the file doesn't exist.
+			try{ //Crates the file.
+			} catch (Exception e){ //Checks for errors.
+				e.printStackTrace(); //Returns errors to the user.
 			}
 			
 		}
 		
 	}
 	
-	public void DeleteFile(){
+	public void DeleteFile(){ //Used to delete the shopping cart data.
 		
-		f.delete();
+		f.delete(); //Deletes content.
 		
 	}
 	
-	public String getContent(){
+	public String getContent(){ //Used to get the content in the cart.
 		
 		String c = "", line;			// Create empty string and a string to hold the file's contents 
 		try {
@@ -52,13 +52,13 @@ public class ShoppingCart extends User {
 		try {
 			FileWriter writer = new FileWriter("Cart_" + getUsername() + ".txt", true);	// Create a filereader from the cart_username.txt
 			BufferedWriter buffer = new BufferedWriter(writer);		// Create a bufferedreader for the filereader
-			String[] strList = item.getInfo().split("///");
+			String[] strList = item.getInfo().split("///"); //Splits at '///' characters.
 			
-			String toAdd = "";
-			for (String str : strList) {
-				toAdd += str + ", ";
+			String toAdd = ""; //Used to store what item is to be added to the cart.
+			for (String str : strList) { //Will loop for as many strings there are in strList.
+				toAdd += str + ", "; //Adds ', ' between content of the item.
 			}
-			toAdd = toAdd.substring(0, toAdd.length() - 2);
+			toAdd = toAdd.substring(0, toAdd.length() - 2); //Removes the final ', ' from the string.
 			
 			buffer.write(toAdd + "\n");		// Write a new line and the info
 			buffer.close();				// Close the bufferedReader

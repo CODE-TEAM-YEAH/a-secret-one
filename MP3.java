@@ -2,8 +2,8 @@
 public class MP3 extends Audio {
 
 	@Override
-	public int getPrice() {
-		return price;
+	public int getPrice() { //Used to get the price.
+		return price; //No enviornmental tax.
 	}
 	
 	public MP3(String[] info){ //Creates MP3 objects.

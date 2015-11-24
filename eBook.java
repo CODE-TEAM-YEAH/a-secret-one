@@ -2,9 +2,9 @@
 public class eBook extends Readable {
 
 	@Override
-	public int getPrice(){
+	public int getPrice(){ //Used to get the price.
 	
-		return price;
+		return price; //No enviornmental tax.
 	}
 
 public eBook(String[] info){ //Creates ebook objects.

@@ -2,8 +2,8 @@
 public class CD extends Audio {
 
 	@Override
-	public int getPrice() {
-		return (int)( price * 1.02);
+	public int getPrice() { //Used to get the price.
+		return (int)( price * 1.02); //Enviornmental tax.
 	}
 	
 	public CD(String[] info){ //Creates CD objects.
